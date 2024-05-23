@@ -30,6 +30,7 @@
         @include('admin.layouts.components.navbar')
         @yield('content')
         @include('admin.layouts.components.footer')
+        @include('sweetalert::alert')
     </main>
 
     <script src="../assets/js/core/popper.min.js"></script>

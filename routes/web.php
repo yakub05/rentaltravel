@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\KontenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,13 +45,14 @@ Route::middleware('auth')->group(function () {
         return view('admin/editadmin');
     })->name('editadmin');
     
-    Route::get('/kelolakonten', function () {
-        return view('admin/kelolakonten');
-    })->name('kelolakonten');
-    
-    Route::get('/tambahkonten', function () {
-        return view('admin/tambahkonten');
-    })->name('tambahkonten');
+    Route::get('/datakonten', [KontenController::class, 'index'])->name('datakonten');
+
+    Route::get('/tambahkonten', [KontenController::class, 'create'])->name('tambahkonten');
+    Route::post('/tambahkonten', [KontenController::class, 'store']);
+
+    // Route::get('/tambahkonten', function () {
+    //     return view('admin/tambahkonten');
+    // })->name('tambahkonten');
     
     Route::get('/editkonten', function () {
         return view('admin/editkonten');
