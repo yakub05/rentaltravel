@@ -16,70 +16,71 @@
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+    <style>
+        body {
+            background: url('../assets/img/curved-images/curved6.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid #ffffff;
+            border-radius: 10px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+    </style>
 </head>
 
-<body class="">
-    <div class="container position-sticky z-index-sticky top-0">
-        <div class="row">
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h3 class="font-weight-bolder text-info text-gradient">Login</h3>
+        </div>
+
+        <div class="login-body">
+            @if (Session::has('loginError'))
+                <div class="alert alert-danger">{{ Session::get('loginError') }}</div>
+            @endif
+            <form action="{{ route('login') }}" method="post">
+                @csrf
+
+                <label>Email</label>
+                <div class="mb-3">
+                    <input type="email" name="email" class="form-control" placeholder="Email" aria-label="Email"
+                        aria-describedby="email-addon" value="{{ old('email') }}">
+                    @error('email')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <label>Password</label>
+                <div class="mb-3">
+                    <input type="password" name="password" class="form-control" placeholder="Password"
+                        aria-label="Password" aria-describedby="password-addon">
+                    @error('password')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Login</button>
+                </div>
+            </form>
         </div>
     </div>
-    <main class="main-content  mt-0">
-        <section>
-            <div class="page-header min-vh-75">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
-                            <div class="card card-plain mt-8">
-                                <div class="card-header pb-0 text-left bg-transparent">
-                                    <h3 class="font-weight-bolder text-info text-gradient">Login</h3>
-                                </div>
 
-                                <div class="card-body">
-                                    @if (Session::has('loginError'))
-                                        <div class="alert alert-danger">{{ Session::get('loginError') }}</div>
-                                    @endif
-                                    <form action="{{ route('login') }}" method="post">
-                                        @csrf
-
-                                        <label>Email</label>
-                                        <div class="mb-3">
-                                            <input type="email" name="email" class="form-control"
-                                                placeholder="Email" aria-label="Email" aria-describedby="email-addon"
-                                                value="{{ old('email') }}">
-                                            @error('email')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <label>Password</label>
-                                        <div class="mb-3">
-                                            <input type="password" name="password" class="form-control"
-                                                placeholder="Password" aria-label="Password"
-                                                aria-describedby="password-addon">
-                                            @error('password')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="text-center">
-                                            <button type="submit"
-                                                class="btn bg-gradient-info w-100 mt-4 mb-0">Login</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
-                                <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6"
-                                    style="background-image:url('../assets/img/curved-images/curved6.jpg')"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>
     <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
