@@ -50,11 +50,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/tambahkonten', [KontenController::class, 'create'])->name('tambahkonten');
     Route::post('/tambahkonten', [KontenController::class, 'store']);
 
-    // Route::get('/tambahkonten', function () {
-    //     return view('admin/tambahkonten');
-    // })->name('tambahkonten');
-    
-    Route::get('/editkonten', function () {
-        return view('admin/editkonten');
-    })->name('editkonten');
+    Route::get('/editkonten/{id}', [KontenController::class, 'edit'])->name('editkonten');
+    Route::put('/editkonten/{id}', [KontenController::class, 'update'])->name('update');
+
+    Route::delete('/deletekonten/{id}', [KontenController::class, 'destroy'])->name('deletekonten');
 });

@@ -77,10 +77,17 @@
                                                     class="badge badge-sm bg-gradient-success">{{ $konten->created_at }}</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <a href="/editkonten" type="button" class="btn btn-warning btn-sm me-2"
-                                                    data-toggle="tooltip" data-original-title="Edit user">Edit</a>
-                                                <button type="button" class="btn btn-danger btn-sm me-2"
-                                                    data-toggle="tooltip" data-original-title="Delete user">Hapus</button>
+                                                <a href="{{ route('editkonten', $konten->id) }}" type="button"
+                                                    class="btn btn-warning btn-sm me-2" data-toggle="tooltip"
+                                                    data-original-title="Edit user">Edit</a>
+                                                <form action="{{ route('deletekonten', $konten->id) }}" method="POST"
+                                                    style="display:inline-block;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm me-2"
+                                                        data-toggle="tooltip" data-original-title="Delete user"
+                                                        onclick="return confirm('Apakah Anda yakin ingin menghapus konten ini?')">Hapus</button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
