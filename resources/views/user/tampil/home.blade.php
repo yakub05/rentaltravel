@@ -1,4 +1,3 @@
-@extends('user.layouts.master')
+@extends('user.layouts.user')
 @section('content')
-<h1>HAlO</h1>
 @endsection
