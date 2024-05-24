@@ -14,9 +14,10 @@
                     <div class="card-header pb-0">
                         <div class="d-flex justify-content-between align-items-center">
                             <h6>Data Konten Website Travel</h6>
-                            <a href="{{ route('tambahkonten') }}" type="button" class="btn btn-primary"><i
-                                    class="fas fa-plus"><span class="ms-2" style="text-transform: none;">Tambah
-                                        Konten</span></i></a>
+                            <a href="{{ route('tambahkonten') }}" type="button" class="btn btn-primary">
+                                <i class="fas fa-plus"><span class="ms-2" style="text-transform: none;">Tambah
+                                        Konten</span></i>
+                            </a>
                         </div>
                         <div class="d-flex justify-content-end align-items-center mt-3">
                             <div class="input-group" style="width: 300px;">
@@ -35,11 +36,12 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No
-                                        </th>
                                         <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Judul Konten</th>
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            No</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Judul</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Deskripsi</th>
@@ -58,25 +60,21 @@
                                                 <span
                                                     class="text-secondary text-xs font-weight-bold">{{ $loop->iteration }}</span>
                                             </td>
-                                            <td>
-                                                <div class="d-flex px-2 py-1">
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">{{ $konten->judul }}</h6>
-                                                    </div>
-                                                </div>
+                                            <td class="align-middle text-center text-sm">
+                                                <img src="{{ Storage::url($konten->foto) }}" alt="{{ $konten->judul }}"
+                                                    class="img-fluid" style="max-width: 100px;">
+                                                <span
+                                                    class="text-secondary text-xs font-weight-bold">{{ $konten->judul }}</span>
                                             </td>
-                                            <td class="align-middle">
-                                                <div class="d-flex px-2 py-1">
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <p class="text-xs text-secondary mb-0">{{ $konten->deskripsi }}</p>
-                                                    </div>
-                                                </div>
+                                            <td class="align-middle text-center text-sm">
+                                                <span
+                                                    class="text-secondary text-xs font-weight-bold">{{ $konten->deskripsi }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
                                                     class="badge badge-sm bg-gradient-success">{{ $konten->created_at }}</span>
                                             </td>
-                                            <td class="align-middle text-center">
+                                            <td class="align-middle text-center text-sm">
                                                 <a href="{{ route('editkonten', $konten->id) }}" type="button"
                                                     class="btn btn-warning btn-sm me-2" data-toggle="tooltip"
                                                     data-original-title="Edit user">Edit</a>
