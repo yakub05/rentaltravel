@@ -16,7 +16,7 @@
                             <h6>Data Konten Website Travel</h6>
                             <a href="{{ route('tambahartikel') }}" type="button" class="btn btn-primary">
                                 <i class="fas fa-plus"><span class="ms-2" style="text-transform: none;">Tambah
-                                        Konten</span></i>
+                                        Artikel</span></i>
                             </a>
                         </div>
                         <div class="d-flex justify-content-end align-items-center mt-3">
