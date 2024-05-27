@@ -69,7 +69,7 @@
                                             <td class="align-middle text-center text-sm">
                                                 <span
                                                     class="text-secondary text-xs font-weight-bold">{!! Str::limit($artikel->deskripsi, 50) !!}
-                                                    </< /span>
+                                                </span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
