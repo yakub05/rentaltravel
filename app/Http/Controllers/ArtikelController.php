@@ -37,13 +37,14 @@ class ArtikelController extends Controller
 
             $validatedData = $request->validate([
                 'judul' => 'required',
-                'foto' => 'required|image',
                 'deskripsi' => 'required',
+                'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
             ], [
                 'judul.required' => 'Judul artikel harus diisi.',
-                'foto.required' => 'Gambar artikel harus diunggah.',
-                'foto.image' => 'File yang diunggah harus berupa gambar.',
                 'deskripsi.required' => 'Deskripsi artikel harus diisi.',
+                'foto.image' => 'File yang diunggah harus berupa gambar.',
+                'foto.mimes' => 'Format gambar harus jpeg, png, jpg, atau gif.',
+                'foto.max' => 'Ukuran gambar tidak boleh melebihi 2MB.',
             ]);
             $fotoPath = $request->file('foto')->store('foto_artikel', 'public');
 
@@ -79,12 +80,14 @@ class ArtikelController extends Controller
         try {
             $validatedData = $request->validate([
                 'judul' => 'required',
-                'foto' => 'nullable|image',
                 'deskripsi' => 'required',
+                'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
             ], [
                 'judul.required' => 'Judul artikel harus diisi.',
-                'foto.image' => 'File yang diunggah harus berupa gambar.',
                 'deskripsi.required' => 'Deskripsi artikel harus diisi.',
+                'foto.image' => 'File yang diunggah harus berupa gambar.',
+                'foto.mimes' => 'Format gambar harus jpeg, png, jpg, atau gif.',
+                'foto.max' => 'Ukuran gambar tidak boleh melebihi 2MB.',
             ]);
 
             $artikel = Artikel::findOrFail($id);
