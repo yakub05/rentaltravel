@@ -70,7 +70,7 @@ class ArtikelController extends Controller
     public function edit($id)
     {
         $artikel = Artikel::findOrFail($id);
-        $userName = Auth::user()->name;
+        $userName = Auth::user()->nama;
 
         return view('admin/editartikel', ['artikel' => $artikel, 'userName' => $userName]);
     }

@@ -67,7 +67,7 @@ class KontenController extends Controller
     public function edit($id)
     {
         $konten = Konten::findOrFail($id);
-        $userName = Auth::user()->name;
+        $userName = Auth::user()->nama;
 
         return view('admin/editkonten', ['konten' => $konten, 'userName' => $userName]);
     }

@@ -21,6 +21,12 @@
                             id="quickForm">
                             @csrf
                             @method('PUT')
+
+                            <div class="mb-3">
+                                <label for="id_user" class="form-label">Nama</label>
+                                <input type="text" class="form-control" id="id_user" name="id_user"
+                                    value="{{ auth()->user()->nama }}" readonly>
+                            </div>
                             <div class="mb-3">
                                 <label for="judul" class="form-label">Judul Artikel</label>
                                 <input type="text" class="form-control" id="judul" name="judul"
@@ -31,7 +37,7 @@
                                 <textarea class="form-control" id="deskripsi" name="deskripsi">{{ $artikel->deskripsi }}</textarea>
                             </div>
                             <div class="mb-3">
-                                <label for="foto" class="form-label">Gambar Artikel</label>
+                                <label for="foto" class="form-label">Gambar</label>
                                 <input type="file" class="form-control" id="foto" name="foto">
                                 <img src="{{ Storage::url($artikel->foto) }}" alt="{{ $artikel->judul }}"
                                     class="img-fluid mt-3" style="max-width: 100px;">

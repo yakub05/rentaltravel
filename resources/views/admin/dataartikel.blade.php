@@ -13,7 +13,7 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h6>Data Konten Website Travel</h6>
+                            <h6>Data Artikel Website Travel</h6>
                             <a href="{{ route('tambahartikel') }}" type="button" class="btn btn-primary">
                                 <i class="fas fa-plus"><span class="ms-2" style="text-transform: none;">Tambah
                                         Artikel</span></i>
