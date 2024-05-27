@@ -68,7 +68,7 @@
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $konten->deskripsi }}</span>
+                                                    class="text-secondary text-xs font-weight-bold">{!!Str::limit($konten->deskripsi,50)!!}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span

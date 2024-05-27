@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Exception;
-use App\Models\Artikel;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Models\Artikel;
+use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
-use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Validation\ValidationException;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Str;
 
 class ArtikelController extends Controller
 {
@@ -19,8 +20,17 @@ class ArtikelController extends Controller
         $keyword = $request->keyword;
         $artikel = Artikel::where('judul', 'like', "%$keyword%")
                         ->orWhere('deskripsi', 'like', "%$keyword%")->paginate(10);
+
+        Log::info('Artikels:', $artikel->toArray());
+
+        // Batasi deskripsi untuk setiap artikel
+        // foreach ($artikel as $artikel) {
+        //     $artikel->deskripsi = Str::limit($artikel->deskripsi, 200);
+        // }
+
         return view('admin/dataartikel', ['artikel' => $artikel, 'keyword' => $keyword]);
     }
+
 
     public function create()
     {
@@ -31,7 +41,7 @@ class ArtikelController extends Controller
     {
         try {
             Log::info('Request data:', $request->all());
-            
+
             $validatedData = $request->validate([
                 'judul' => 'required',
                 'foto' => 'required|image',
@@ -51,7 +61,7 @@ class ArtikelController extends Controller
 
             $artikel->id_user = Auth::id();
             $artikel->save();
-    
+
             Alert::toast('Artikel baru telah ditambahkan', 'success');
             return redirect('/dataartikel');
         } catch (ValidationException $th) {
@@ -67,7 +77,7 @@ class ArtikelController extends Controller
     {
         try {
             $artikel = Artikel::findOrFail($id);
-            
+
             if ($artikel->foto) {
                 Storage::delete('public/' . $artikel->foto);
             }
