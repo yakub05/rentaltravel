@@ -62,7 +62,7 @@
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <img src="{{ Storage::url($konten->foto) }}" alt="{{ $konten->judul }}"
-                                                    class="img-fluid" style="max-width: 100px;">
+                                                    class="img-fluid" style="max-width: 100px; max-height: 100px;">
                                                 <span
                                                     class="text-secondary text-xs font-weight-bold">{{ $konten->judul }}</span>
                                             </td>

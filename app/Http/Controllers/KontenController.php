@@ -34,13 +34,14 @@ class KontenController extends Controller
             
             $validatedData = $request->validate([
                 'judul' => 'required',
-                'foto' => 'required|image',
                 'deskripsi' => 'required',
+                'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
             ], [
                 'judul.required' => 'Judul konten harus diisi.',
-                'foto.required' => 'Gambar konten harus diunggah.',
-                'foto.image' => 'File yang diunggah harus berupa gambar.',
                 'deskripsi.required' => 'Deskripsi konten harus diisi.',
+                'foto.image' => 'File yang diunggah harus berupa gambar.',
+                'foto.mimes' => 'Format gambar harus jpeg, png, jpg, atau gif.',
+                'foto.max' => 'Ukuran gambar tidak boleh melebihi 2MB.',
             ]);
             $fotoPath = $request->file('foto')->store('foto_konten', 'public');
 
@@ -66,7 +67,9 @@ class KontenController extends Controller
     public function edit($id)
     {
         $konten = Konten::findOrFail($id);
-        return view('admin.editkonten', compact('konten'));
+        $userName = Auth::user()->name;
+
+        return view('admin/editkonten', ['konten' => $konten, 'userName' => $userName]);
     }
 
     public function update(Request $request, $id)
@@ -98,8 +101,8 @@ class KontenController extends Controller
 
             $konten->save();
 
-            Alert::toast('Konten berhasil diperbarui', 'success');
-            return redirect()->route('datakonten');
+            Alert::toast('Konten telah diperbarui', 'success');
+            return redirect('/datakonten');
         } catch (ValidationException $th) {
             Alert::error('Gagal', $th->validator->errors()->first());
             return redirect()->back();

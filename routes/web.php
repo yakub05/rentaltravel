@@ -53,7 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/tambahkonten', [KontenController::class, 'store']);
 
     Route::get('/editkonten/{id}', [KontenController::class, 'edit'])->name('editkonten');
-    Route::put('/editkonten/{id}', [KontenController::class, 'update'])->name('update');
+    Route::put('/editkonten/{id}', [KontenController::class, 'update'])->name('updatekonten');
 
     Route::delete('/deletekonten/{id}', [KontenController::class, 'destroy'])->name('deletekonten');
 
@@ -63,11 +63,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/tambahartikel', [ArtikelController::class, 'create'])->name('tambahartikel');
     Route::post('/tambahartikel', [ArtikelController::class, 'store']);
 
-    // Route::get('/editartikel/{id}', [ArtikelController::class, 'edit'])->name('editartikel');
-    // Route::put('/editartikel/{id}', [ArtikelController::class, 'update'])->name('update');
-
     Route::get('/editartikel/{id}', [ArtikelController::class, 'edit'])->name('editartikel');
-    Route::put('/editartikel/{id}', [ArtikelController::class, 'update'])->name('update');
+    Route::put('/editartikel/{id}', [ArtikelController::class, 'update'])->name('updateartikel');
 
     Route::delete('/deleteartikel/{id}', [ArtikelController::class, 'destroy'])->name('deleteartikel');
 });
