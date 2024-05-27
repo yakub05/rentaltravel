@@ -62,13 +62,14 @@
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <img src="{{ Storage::url($artikel->foto) }}" alt="{{ $artikel->judul }}"
-                                                    class="img-fluid" style="max-width: 100px;">
+                                                    class="img-fluid" style="max-width: 100px; max-height: 100px;">
                                                 <span
                                                     class="text-secondary text-xs font-weight-bold">{{ $artikel->judul }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{!!Str::limit($artikel->deskripsi,50)!!}</</span>
+                                                    class="text-secondary text-xs font-weight-bold">{!! Str::limit($artikel->deskripsi, 50) !!}
+                                                    </< /span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span

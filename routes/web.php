@@ -63,6 +63,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/tambahartikel', [ArtikelController::class, 'create'])->name('tambahartikel');
     Route::post('/tambahartikel', [ArtikelController::class, 'store']);
 
+    // Route::get('/editartikel/{id}', [ArtikelController::class, 'edit'])->name('editartikel');
+    // Route::put('/editartikel/{id}', [ArtikelController::class, 'update'])->name('update');
+
     Route::get('/editartikel/{id}', [ArtikelController::class, 'edit'])->name('editartikel');
     Route::put('/editartikel/{id}', [ArtikelController::class, 'update'])->name('update');
 
