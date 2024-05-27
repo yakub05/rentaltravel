@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KontenController;
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +27,12 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
     
-    Route::get('/dashboard', function () {
-        return view('admin/dashboard');
-    })->name('dashboard')->middleware('auth');;
+    // Route::get('/dashboard', function () {
+    //     return view('admin/dashboard');
+    // })->name('dashboard')->middleware('auth');
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->name('dashboard')->middleware('auth');
     
     Route::get('/admin', function () {
         return view('admin/layouts/admin');
