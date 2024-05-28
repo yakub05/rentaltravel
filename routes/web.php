@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KontenController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PortfolioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,10 @@ use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('user/tampil/home');
-})->name('user/tampil/home');
+})->name('home');
+
+Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio');
+Route::get('/detail-portfolio/{id}', [PortfolioController::class, 'detail'])->name('portfolio.detail');
 
 Route::get('/login', [AuthController::class,'index'])->name('login');
 Route::post('/login', [AuthController::class,'login'])->name('login');

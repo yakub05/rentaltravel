@@ -1,11 +1,11 @@
 <nav id="navbar" class="navbar">
     <ul>
-      <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-      <li><a class="nav-link scrollto" href="#about">About</a></li>
-      <li><a class="nav-link scrollto" href="#services">Services</a></li>
-      <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
-      <li><a class="nav-link scrollto" href="#team">Team</a></li>
-      <li><a href="blog.html">Blog</a></li>
+      <li><a class="nav-link scrollto active" href="/">Beranda</a></li>
+      <li><a class="nav-link scrollto" href="#about">Tentang Kami</a></li>
+      <li><a class="nav-link scrollto" href="#services">Travel</a></li>
+      <li><a class="nav-link scrollto" href="">Artikel</a></li>
+      <li><a class="nav-link scrollto" href="/portfolio">Portofolio</a></li>
+      <li><a href="blog.html">Tim</a></li>
       <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
         <ul>
           <li><a href="#">Drop Down 1</a></li>
@@ -49,7 +49,7 @@
         </ul>
       </li>
 
-      <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+      {{-- <li><a class="nav-link scrollto" href="#contact">Contact</a></li> --}}
       <li><a class="login scrollto" href="/login">Login</a></li>
     </ul>
     <i class="bi bi-list mobile-nav-toggle"></i>
