@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KontenController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TestimoniController;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,4 +77,15 @@ Route::middleware('auth')->group(function () {
     Route::put('/editartikel/{id}', [ArtikelController::class, 'update'])->name('updateartikel');
 
     Route::delete('/deleteartikel/{id}', [ArtikelController::class, 'destroy'])->name('deleteartikel');
+
+    //Data Testimoni
+    Route::get('/datatestimoni', [TestimoniController::class, 'index'])->name('datatestimoni');
+
+    Route::get('/tambahtestimoni', [TestimoniController::class, 'create'])->name('tambahtestimoni');
+    Route::post('/tambahtestimoni', [TestimoniController::class, 'store']);
+
+    Route::get('/edittestimoni/{id}', [TestimoniController::class, 'edit'])->name('edittestimoni');
+    Route::put('/edittestimoni/{id}', [TestimoniController::class, 'update'])->name('updatetestimoni');
+
+    Route::delete('/deletetestimoni/{id}', [TestimoniController::class, 'destroy'])->name('deletetestimoni');
 });
