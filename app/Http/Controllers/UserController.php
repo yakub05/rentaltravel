@@ -5,10 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-<<<<<<< HEAD
-=======
 use Illuminate\Support\Facades\Log;
->>>>>>> d861ab583f0dbafae980ce009120c1f2e332542f
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -41,10 +38,6 @@ class UserController extends Controller
         Alert::toast('Admin baru telah ditambahkan', 'success');
         return redirect('/dataadmin');
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> d861ab583f0dbafae980ce009120c1f2e332542f
     public function edit($id)
     {
         $user = User::find($id);

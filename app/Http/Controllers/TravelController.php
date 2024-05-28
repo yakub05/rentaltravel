@@ -66,8 +66,6 @@ class TravelController extends Controller
             return redirect()->back();
         }
     }
-<<<<<<< HEAD
-=======
 
     public function edit($id)
     {
@@ -126,7 +124,6 @@ class TravelController extends Controller
         }
     }
 
->>>>>>> d861ab583f0dbafae980ce009120c1f2e332542f
     public function destroy($id)
     {
         $travel = Travel::findOrFail($id);
@@ -135,9 +132,6 @@ class TravelController extends Controller
         Alert::toast('Data Travel berhasil dihapus', 'success');
         return redirect('/datarentaltravel');
     }
-<<<<<<< HEAD
-}
-=======
 
     public function user_travel()
     {
@@ -145,4 +139,3 @@ class TravelController extends Controller
         return view('user/tampil/travel', compact('travel'));
     }
 }
->>>>>>> d861ab583f0dbafae980ce009120c1f2e332542f

@@ -1,10 +1,7 @@
 <?php
 namespace App\Models;
-<<<<<<< HEAD
-=======
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
->>>>>>> d861ab583f0dbafae980ce009120c1f2e332542f
 use App\Models\Konten;
 use App\Models\Travel;
 use App\Models\Artikel;

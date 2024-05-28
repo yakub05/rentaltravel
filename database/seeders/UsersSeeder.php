@@ -19,6 +19,7 @@ class UsersSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => Hash::make('12345678'),
             'telf' => '081286779467',
+            'user_type' => 'admin',
         ]);
     }
 }
