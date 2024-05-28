@@ -41,6 +41,9 @@
                                             No</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Foto</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Judul</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -48,6 +51,9 @@
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Tanggal Dibuat</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Tanggal Diupdate</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Aksi</th>
@@ -61,18 +67,24 @@
                                                     class="text-secondary text-xs font-weight-bold">{{ $loop->iteration }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <img src="{{ Storage::url($konten->foto) }}" alt="{{ $konten->judul }}"
-                                                    class="img-fluid" style="max-width: 100px; max-height: 100px;">
+                                                <img src="{{ Storage::url($konten->foto) }}" alt="Foto Artikel"
+                                                    class="img-fluid">
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
                                                 <span
                                                     class="text-secondary text-xs font-weight-bold">{{ $konten->judul }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{!!Str::limit($konten->deskripsi,50)!!}</span>
+                                                    class="text-secondary text-xs font-weight-bold">{!! Str::limit($konten->deskripsi, 50) !!}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
                                                     class="badge badge-sm bg-gradient-success">{{ $konten->created_at }}</span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span
+                                                    class="badge badge-sm bg-gradient-success">{{ $konten->updated_at }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <a href="{{ route('editkonten', $konten->id) }}" type="button"

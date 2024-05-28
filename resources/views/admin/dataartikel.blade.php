@@ -53,6 +53,9 @@
                                             Tanggal Dibuat</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Tanggal Diupdate</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Aksi</th>
                                     </tr>
                                 </thead>
@@ -64,7 +67,8 @@
                                                     class="text-secondary text-xs font-weight-bold">{{ $loop->iteration }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <img src="{{ Storage::url($artikel->foto) }}" alt="Foto Artikel" class="img-fluid">
+                                                <img src="{{ Storage::url($artikel->foto) }}" alt="Foto Artikel"
+                                                    class="img-fluid">
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
@@ -78,6 +82,10 @@
                                             <td class="align-middle text-center text-sm">
                                                 <span
                                                     class="badge badge-sm bg-gradient-success">{{ $artikel->created_at }}</span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span
+                                                    class="badge badge-sm bg-gradient-success">{{ $artikel->updated_at }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <a href="{{ route('editartikel', $artikel->id) }}" type="button"
