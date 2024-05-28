@@ -7,8 +7,8 @@
               document.write(new Date().getFullYear())
             </script>,
             made with <i class="fa fa-heart"></i> by
-            <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Kelompok 8</a>
-            Pemesanan Travel Malang
+            <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Kelompok 5</a>
+            Overland Trans
           </div>
         </div>
       </div>
