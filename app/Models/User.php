@@ -3,6 +3,9 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Konten;
+use App\Models\Travel;
+use App\Models\Artikel;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -39,6 +42,10 @@ class User extends Authenticatable
         return $this->hasMany(Testimoni::class, 'id_user');
     }
 
+    public function travel()
+    {
+        return $this->hasMany(Travel::class, 'id_user');
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

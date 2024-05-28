@@ -13,15 +13,15 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h6>Data Artikel Website Travel</h6>
-                            <a href="{{ route('tambahartikel') }}" type="button" class="btn btn-primary">
+                            <h6>Data Konten Rental Travel</h6>
+                            <a href="/tambahrental" type="button" class="btn btn-primary">
                                 <i class="fas fa-plus"><span class="ms-2" style="text-transform: none;">Tambah
-                                        Artikel</span></i>
+                                        Konten</span></i>
                             </a>
                         </div>
                         <div class="d-flex justify-content-end align-items-center mt-3">
                             <div class="input-group" style="width: 300px;">
-                                <form action="{{ route('dataartikel') }}" method="GET" class="d-flex">
+                                <form action="{{ route('datakonten') }}" method="GET" class="d-flex">
                                     <span class="input-group-text text-body"><i class="fas fa-search"
                                             aria-hidden="true"></i></span>
                                     <input type="text" class="form-control form-control-sm" name="keyword"
@@ -41,56 +41,61 @@
                                             No</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Nama Travel</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Foto</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Judul</th>
+                                            Tujuan</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Deskripsi</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Tanggal Dibuat</th>
+                                            Telp</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($artikel as $artikel)
+                                    @foreach ($travel as $travel)
                                         <tr>
                                             <td class="align-middle text-center text-sm">
                                                 <span
                                                     class="text-secondary text-xs font-weight-bold">{{ $loop->iteration }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <img src="{{ Storage::url($artikel->foto) }}" alt="Foto Artikel" class="img-fluid">
+                                                <span
+                                                    class="text-secondary text-xs font-weight-bold">{{ $travel->nama_travel}}</span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <img src="{{ Storage::url($travel->foto) }}" alt="Foto Artikel" class="img-fluid">
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $artikel->judul }}</span>
+                                                    class="text-secondary text-xs font-weight-bold">{{$travel->tujuan}}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{!! Str::limit($artikel->deskripsi, 50) !!}
-                                                </span>
+                                                    class="text-secondary text-xs font-weight-bold">{!!Str::limit($travel->deskripsi,25)!!}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="badge badge-sm bg-gradient-success">{{ $artikel->created_at }}</span>
+                                                    class="badge badge-sm bg-gradient-success">{{ $travel->telp }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <a href="{{ route('editartikel', $artikel->id) }}" type="button"
+                                                <a href="/editrental" type="button"
                                                     class="btn btn-warning btn-sm me-2" data-toggle="tooltip"
                                                     data-original-title="Edit user">Edit</a>
-                                                <form action="{{ route('deleteartikel', $artikel->id) }}" method="POST"
-                                                    style="display:inline-block;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm me-2"
-                                                        data-toggle="tooltip" data-original-title="Delete user"
-                                                        onclick="return confirm('Apakah Anda yakin ingin menghapus konten ini?')">Hapus</button>
-                                                </form>
+                                                    <form id="delete-form-{{ $travel->id }}" action="{{ route('deletetravel', $travel->id) }}" method="POST" style="display: none;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    </form>
+                                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-original-title="Delete user" onclick="confirmDelete({{ $travel->id }})">
+                                                        Delete
+                                                    </button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -105,4 +110,21 @@
             </div>
         </div>
     </div>
+    <script>
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Kamu Yakin Mau hapus data ini?',
+                text: "Kamu Akan Menghapus Data ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya hapus data ini!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form-' + id).submit();
+                }
+            })
+        }
+    </script>
 @endsection

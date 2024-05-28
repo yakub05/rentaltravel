@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\KontenController;
+use App\Http\Controllers\TravelController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TestimoniController;
@@ -43,19 +45,33 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin', function () {
         return view('admin/layouts/admin');
     })->name('layouts/admin');
-    
-    Route::get('/dataadmin', function () {
-        return view('admin/dataadmin');
-    })->name('dataadmin');
-    
+
+    Route::get('/dataadmin', [UserController::class, 'index']);
+    Route::get('tambahdataadmin', [UserController::class, 'create'])->name('tambahdataadmin');
+    Route::post('tambahdataadmin', [UserController::class, 'store']);
+    Route::get('/editadmin/{id}', [UserController::class, 'edit'])->name('editadmin');
+    Route::put('/editadmin/{id}', [UserController::class, 'update'])->name('update');
+    Route::delete('deleteadmin/{id}', [UserController::class, 'destroy'])->name('deleteadmin');
+
     Route::get('/tambahdataadmin', function () {
         return view('admin/tambahdataadmin');
     })->name('tambahdataadmin');
-    
+
     Route::get('/editadmin', function () {
         return view('admin/editadmin');
     })->name('editadmin');
-    
+
+    //Data Rental Travel
+    Route::get('/datarentaltravel', [TravelController::class, 'index']);
+
+    Route::get('/tambahrental', [TravelController::class, 'create'])->name('tambahrental');
+    Route::post('/tambahrental', [TravelController::class, 'store']);
+
+    Route::get('/editrental', function () {
+        return view('admin/editrental');
+    })->name('editrental');
+    Route::delete('deletetravel/{id}', [TravelController::class, 'destroy'])->name('deletetravel');
+
     //Data Konten
     Route::get('/datakonten', [KontenController::class, 'index'])->name('datakonten');
 
