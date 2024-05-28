@@ -94,6 +94,7 @@ Route::middleware('auth')->group(function () {
 
     //Data Testimoni
     Route::get('/datatestimoni', [TestimoniController::class, 'index'])->name('datatestimoni');
+    Route::get('/admin/datatestimoni', [TestimoniController::class, 'index_admin'])->name('admindatatestimoni');
 
     Route::get('/tambahtestimoni', [TestimoniController::class, 'create'])->name('tambahtestimoni');
     Route::post('/tambahtestimoni', [TestimoniController::class, 'store']);
