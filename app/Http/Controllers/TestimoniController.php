@@ -25,6 +25,12 @@ class TestimoniController extends Controller
         return view('admin/datatestimoni', compact('testimoni'));
     }
 
+    public function user_testimoni()
+    {
+        $testimoni = Testimoni::orderBy('id', 'desc')->get();
+        return view('user/tampil/testimoni', compact('testimoni'));
+    }
+
     public function create()
     {
         return view('customer/tambahtestimoni');
