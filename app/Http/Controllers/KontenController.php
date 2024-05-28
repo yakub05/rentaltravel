@@ -130,4 +130,16 @@ class KontenController extends Controller
             return redirect()->route('datakonten');
         }
     }
+
+    public function user_konten()
+    {
+        $konten = Konten::orderBy('id', 'desc')->get();
+        return view('user/tampil/portfolio', compact('konten'));
+    }
+
+    public function user_konten_detail($id)
+    {
+        $konten = Konten::findOrFail($id);
+        return view('user/tampil/detail-portfolio', compact('konten'));
+    }
 }
