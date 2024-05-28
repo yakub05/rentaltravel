@@ -74,36 +74,6 @@
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-<<<<<<< HEAD
-                                                    class="text-secondary text-xs font-weight-bold">{{ $travel->nama_travel}}</span>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <img src="{{ Storage::url($travel->foto) }}" alt="Foto Artikel" class="img-fluid">
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span
-                                                    class="text-secondary text-xs font-weight-bold">{{$travel->tujuan}}</span>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span
-                                                    class="text-secondary text-xs font-weight-bold">{!!Str::limit($travel->deskripsi,25)!!}</span>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span
-                                                    class="badge badge-sm bg-gradient-success">{{ $travel->telp }}</span>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <a href="/editrental" type="button"
-                                                    class="btn btn-warning btn-sm me-2" data-toggle="tooltip"
-                                                    data-original-title="Edit user">Edit</a>
-                                                    <form id="delete-form-{{ $travel->id }}" action="{{ route('deletetravel', $travel->id) }}" method="POST" style="display: none;">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                    </form>
-                                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-original-title="Delete user" onclick="confirmDelete({{ $travel->id }})">
-                                                        Delete
-                                                    </button>
-=======
                                                     class="text-secondary text-xs font-weight-bold">{{ $travel->nama_travel }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
@@ -144,7 +114,6 @@
                                                     onclick="confirmDelete({{ $travel->id }})">
                                                     Delete
                                                 </button>
->>>>>>> d861ab583f0dbafae980ce009120c1f2e332542f
                                             </td>
                                         </tr>
                                     @endforeach

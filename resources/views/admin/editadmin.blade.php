@@ -10,11 +10,7 @@
 <div class="container-fluid py-4">
     <div class="row">
         <div class="col-12">
-<<<<<<< HEAD
-            <form method="POST" action="/editadmin/{{$user->id}}" enctype="multipart/form-data" id="quickForm">
-=======
             <form method="POST" action="{{ route('updateadmin', $user->id) }}" enctype="multipart/form-data" id="quickForm">
->>>>>>> d861ab583f0dbafae980ce009120c1f2e332542f
                 @csrf
                 @method('PUT')
                 <div class="card">
@@ -28,14 +24,10 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="nama" class="form-control-label">Nama</label>
-<<<<<<< HEAD
-                                    <input class="form-control" type="text" id="nama" name="nama" value="{{ $user->nama, old('nama') }}">
-=======
                                     <input class="form-control" type="text" id="nama" name="nama" value="{{ old('nama', $user->nama) }}">
                                     @error('nama')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
->>>>>>> d861ab583f0dbafae980ce009120c1f2e332542f
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -51,16 +43,6 @@
                                 <div class="form-group">
                                     <label for="password" class="form-control-label">Password</label>
                                     <input class="form-control" type="password" id="password" name="password">
-<<<<<<< HEAD
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="noTelp" class="form-control-label">No. Telp</label>
-                                    <input class="form-control" type="text" id="noTelp" name="noTelp" value="{{ $user->telf, old('telf') }}">
-                                </div>
-                            </div>
-=======
                                     @error('password')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror
@@ -87,7 +69,6 @@
                                     @enderror
                                 </div>
                             </div>
->>>>>>> d861ab583f0dbafae980ce009120c1f2e332542f
                         </div>
                         <a href="/dataadmin" class="btn btn-warning">Kembali</a>
                         <button type="submit" class="btn btn-success">Update Data</button>
