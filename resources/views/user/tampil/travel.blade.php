@@ -29,10 +29,20 @@
                                             <i class="fab fa-whatsapp"></i> Chat
                                         </a>
                                     </td> --}}
-                                    <td class="align-middle text-center">
+                                    {{-- <td class="align-middle text-center">
                                         @php
                                             $message = "Hai saya ingin memesan travel " . $item->nama_travel . " dengan tujuan " . $item->tujuan . ".";
                                             $url = "https://wa.me/" . $item->telp . "?text=" . urlencode($message);
+                                        @endphp
+                                        <a href="{{ $url }}" class="btn btn-success" target="_blank">
+                                            <i class="fab fa-whatsapp"></i> Chat
+                                        </a>
+                                    </td> --}}
+                                    <td class="align-middle text-center">
+                                        @php
+                                            $message = "Hai saya ingin memesan travel " . $item->nama_travel . " dengan tujuan " . $item->tujuan . ".";
+                                            $phone_number = preg_replace('/^0/', '62', $item->telp); 
+                                            $url = "https://wa.me/" . $phone_number . "?text=" . urlencode($message);
                                         @endphp
                                         <a href="{{ $url }}" class="btn btn-success" target="_blank">
                                             <i class="fab fa-whatsapp"></i> Chat
