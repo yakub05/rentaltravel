@@ -5,7 +5,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KontenController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\PortfolioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +21,11 @@ Route::get('/', function () {
     return view('user/tampil/home');
 })->name('home');
 
-Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio');
-Route::get('/detail-portfolio/{id}', [PortfolioController::class, 'detail'])->name('portfolio.detail');
+Route::get('/portfolio', [KontenController::class, 'user_konten'])->name('portfolio');
+Route::get('/detail-portfolio/{id}', [KontenController::class, 'user_konten_detail'])->name('portfolio.detail');
+
+Route::get('/artikel', [ArtikelController::class, 'user_artikel'])->name('user.artikel');
+Route::get('/detail-artikel/{id}', [ArtikelController::class, 'user_artikel_detail'])->name('user.artikel.detail');
 
 Route::get('/login', [AuthController::class,'index'])->name('login');
 Route::post('/login', [AuthController::class,'login'])->name('login');

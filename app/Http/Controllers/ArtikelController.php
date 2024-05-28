@@ -133,4 +133,16 @@ class ArtikelController extends Controller
             return redirect()->route('dataartikel');
         }
     }
+
+    public function user_artikel()
+    {
+        $artikel = Artikel::orderBy('id', 'desc')->get();
+        return view('user/tampil/artikel', compact('artikel'));
+    }
+
+    public function user_artikel_detail($id)
+    {
+        $artikel = Artikel::findOrFail($id);
+        return view('user/tampil/detail-artikel', compact('artikel'));
+    }
 }
