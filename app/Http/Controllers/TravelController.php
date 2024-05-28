@@ -132,4 +132,16 @@ class TravelController extends Controller
         Alert::toast('Data Travel berhasil dihapus', 'success');
         return redirect('/datarentaltravel');
     }
+
+    public function user_travel()
+    {
+        $travel = Travel::orderBy('id', 'desc')->get();
+        return view('user/tampil/travel', compact('travel'));
+    }
+
+    public function user_travel_detail($id)
+    {
+        $travel = Travel::findOrFail($id);
+        return view('user/tampil/detail-travel', compact('travel'));
+    }
 }

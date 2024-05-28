@@ -34,6 +34,9 @@ Route::get('/tentang-kami', function () {
     return view('user/tampil/tentang-kami');
 })->name('tentang-kami');
 
+Route::get('/travel', [TravelController::class, 'user_travel'])->name('travel');
+Route::get('/travel-portfolio/{id}', [TravelController::class, 'user_travel_detail'])->name('travel.detail');
+
 Route::get('/login', [AuthController::class,'index'])->name('login');
 Route::post('/login', [AuthController::class,'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
