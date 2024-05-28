@@ -101,7 +101,7 @@
                     <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
                         <div class="member">
                             <div class="member-img">
-                                <img src="assets/home/img/team/team-4.jpg" class="img-fluid" alt="">
+                                <img src="assets/home/img/team/zub.jpg" class="img-fluid" alt="">
                             </div>
                             <div class="member-info">
                                 <h4>Zubaidah Diniyah</h4>
