@@ -104,31 +104,15 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <div class="card-footer clearfix">
+                                {{ $users->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-  </div>
-  <script>
-    function confirmDelete(id) {
-        Swal.fire({
-            title: 'Kamu Yakin Mau hapus data ini?',
-            text: "Kamu Akan Menghapus Data ini!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya hapus data ini!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                document.getElementById('delete-form-' + id).submit();
-            }
-        })
-    }
-=======
     <script>
         function confirmDelete(id) {
             Swal.fire({
@@ -145,6 +129,5 @@
                 }
             })
         }
->>>>>>> d861ab583f0dbafae980ce009120c1f2e332542f
     </script>
 @endsection
