@@ -13,7 +13,7 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h6>Data Admin Travel</h6>
+                            <h6>Data User Travel</h6>
                             <a href="/tambahdataadmin" type="button" class="btn btn-primary"><i class="fas fa-plus"><span
                                         class="ms-2" style="text-transform: none;">Tambah Admin</span></i></a>
                         </div>
@@ -44,10 +44,10 @@
                                             No Telp.</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Tanggal Dibuat</th>
+                                            Role </th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Tanggal Diupdate</th>
+                                            Tanggal Dibuat</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Aksi</th>
@@ -76,11 +76,11 @@
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="badge badge-sm bg-gradient-success">{{ $user->created_at }}</span>
+                                                    class="badge badge-sm bg-gradient-success">{{ $user->user_type }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="badge badge-sm bg-gradient-success">{{ $user->updated_at }}</span>
+                                                    class="text-secondary text-xs font-weight-bold">{{ $user->created_at }}</span>
                                             </td>
                                             <td class="align-middle">
                                                 <a href="/editadmin/{{ $user->id }}" type="button"
