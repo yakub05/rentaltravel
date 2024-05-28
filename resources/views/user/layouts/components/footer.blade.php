@@ -20,6 +20,7 @@
                         <li><i class="bi bi-chevron-right"></i> <a href="/travel">Travel</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="/artikel">Artikel</a></li>
                         <li><i class="bi bi-chevron-right"></i> <a href="/portfolio">Portofolio</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="/testimoni">Testimoni</a></li>
                     </ul>
                 </div>
 

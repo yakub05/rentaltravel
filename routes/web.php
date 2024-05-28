@@ -36,6 +36,8 @@ Route::get('/tentang-kami', function () {
 
 Route::get('/travel', [TravelController::class, 'user_travel'])->name('travel');
 
+Route::get('/testimoni', [TestimoniController::class, 'user_testimoni'])->name('user.testimoni');
+
 Route::get('/login', [AuthController::class,'index'])->name('login');
 Route::post('/login', [AuthController::class,'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -49,7 +51,7 @@ Route::middleware('auth')->group(function () {
     })->name('layouts/admin');
 
     //Data Admin
-    Route::get('/dataadmin', [UserController::class, 'index']);
+    Route::get('/dataadmin', [UserController::class, 'index'])->name('dataadmin');;
 
     Route::get('tambahdataadmin', [UserController::class, 'create'])->name('tambahdataadmin');
     Route::post('tambahdataadmin', [UserController::class, 'store']);
@@ -60,7 +62,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('deleteadmin/{id}', [UserController::class, 'destroy'])->name('deleteadmin');
 
     //Data Rental Travel
-    Route::get('/datarentaltravel', [TravelController::class, 'index']);
+    Route::get('/datarentaltravel', [TravelController::class, 'index'])->name('datarentaltravel');
 
     Route::get('/tambahrental', [TravelController::class, 'create'])->name('tambahrental');
     Route::post('/tambahrental', [TravelController::class, 'store']);
@@ -94,6 +96,7 @@ Route::middleware('auth')->group(function () {
 
     //Data Testimoni
     Route::get('/datatestimoni', [TestimoniController::class, 'index'])->name('datatestimoni');
+    Route::get('/admin/datatestimoni', [TestimoniController::class, 'index_admin'])->name('admindatatestimoni');
 
     Route::get('/tambahtestimoni', [TestimoniController::class, 'create'])->name('tambahtestimoni');
     Route::post('/tambahtestimoni', [TestimoniController::class, 'store']);

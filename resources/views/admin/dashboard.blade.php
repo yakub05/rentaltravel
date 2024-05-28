@@ -101,10 +101,10 @@
                             <div class="col-8">
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Data Travel</p>
-                                    {{-- <h5 class="font-weight-bolder mb-0">
+                                    <h5 class="font-weight-bolder mb-0">
                                     {{ number_format($dataTravelCount) }}
                                     <span class="text-success text-sm font-weight-bolder">{{ round($travelPercentage, 2) }}%</span>
-                                </h5> --}}
+                                </h5>
                                 </div>
                             </div>
                             <div class="col-4 text-end">

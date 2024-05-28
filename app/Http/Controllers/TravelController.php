@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Validator;
 
 class TravelController extends Controller
 {
-    public function index(){
-        $travel = Travel::all();
-        return view('admin.datarentaltravel', compact('travel'));
+    public function index(Request $request){
+        $keyword = $request->keyword;
+        $travel = Travel::where('nama_travel', 'like', "%$keyword%")
+                        ->orWhere('deskripsi', 'like', "%$keyword%")->paginate(10);
+
+        return view('admin.datarentaltravel', ['travel' => $travel, 'keyword' => $keyword]);
     }
 
     public function create()

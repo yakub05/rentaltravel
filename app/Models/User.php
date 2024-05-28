@@ -24,6 +24,7 @@ class User extends Authenticatable
         'email',
         'password',
         'telf',
+        'user_type',
     ];
 
     public function artikel()

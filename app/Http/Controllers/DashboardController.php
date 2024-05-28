@@ -20,21 +20,21 @@ class DashboardController extends Controller
         $dataUserCount = User::count();
         $dataKontenCount = Konten::count();
         $dataArtikelCount = Artikel::count();
-        // $dataTravelCount = Travel::count();
+        $dataTravelCount = Travel::count();
 
         $dataUserLastWeek = User::where('created_at', '>=', $lastWeek)->count();
         $dataKontenLastWeek = Konten::where('created_at', '>=', $lastWeek)->count();
         $dataArtikelLastWeek = Artikel::where('created_at', '>=', $lastWeek)->count();
-        // $dataTravelLastWeek = Travel::where('created_at', '>=', $lastWeek)->count();
+        $dataTravelLastWeek = Travel::where('created_at', '>=', $lastWeek)->count();
 
         $userPercentage = $this->calculatePercentageIncrease($dataUserLastWeek, $dataUserCount);
         $kontenPercentage = $this->calculatePercentageIncrease($dataKontenLastWeek, $dataKontenCount);
         $artikelPercentage = $this->calculatePercentageIncrease($dataArtikelLastWeek, $dataArtikelCount);
-        // $travelPercentage = $this->calculatePercentageIncrease($dataTravelLastWeek, $dataTravelCount);
+        $travelPercentage = $this->calculatePercentageIncrease($dataTravelLastWeek, $dataTravelCount);
 
         return view('admin.dashboard', compact(
-            'dataUserCount', 'dataKontenCount', 'dataArtikelCount',
-            'userPercentage', 'kontenPercentage', 'artikelPercentage', 
+            'dataUserCount', 'dataKontenCount', 'dataArtikelCount', 'dataTravelCount',
+            'userPercentage', 'kontenPercentage', 'artikelPercentage', 'travelPercentage', 
         ));
     }
 
