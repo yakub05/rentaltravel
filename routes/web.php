@@ -46,20 +46,16 @@ Route::middleware('auth')->group(function () {
         return view('admin/layouts/admin');
     })->name('layouts/admin');
 
+    //Data Admin
     Route::get('/dataadmin', [UserController::class, 'index']);
+
     Route::get('tambahdataadmin', [UserController::class, 'create'])->name('tambahdataadmin');
     Route::post('tambahdataadmin', [UserController::class, 'store']);
+
     Route::get('/editadmin/{id}', [UserController::class, 'edit'])->name('editadmin');
-    Route::put('/editadmin/{id}', [UserController::class, 'update'])->name('update');
+    Route::put('/editadmin/{id}', [UserController::class, 'update'])->name('updateadmin');
+
     Route::delete('deleteadmin/{id}', [UserController::class, 'destroy'])->name('deleteadmin');
-
-    Route::get('/tambahdataadmin', function () {
-        return view('admin/tambahdataadmin');
-    })->name('tambahdataadmin');
-
-    Route::get('/editadmin', function () {
-        return view('admin/editadmin');
-    })->name('editadmin');
 
     //Data Rental Travel
     Route::get('/datarentaltravel', [TravelController::class, 'index']);
