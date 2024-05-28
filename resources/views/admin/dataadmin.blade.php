@@ -19,9 +19,13 @@
                         </div>
                         <div class="d-flex justify-content-end align-items-center mt-3">
                             <div class="input-group" style="width: 300px;">
-                                <span class="input-group-text text-body"><i class="fas fa-search"
-                                        aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" placeholder="Type here...">
+                                <form action="{{ route('dataadmin') }}" method="GET" class="d-flex">
+                                    <span class="input-group-text text-body"><i class="fas fa-search"
+                                            aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control form-control-sm" name="keyword"
+                                        placeholder="Type here..." value="{{ $keyword ?? '' }}">
+                                    <button class="btn btn-primary" type="submit">Search</button>
+                                </form>
                             </div>
                         </div>
                     </div>

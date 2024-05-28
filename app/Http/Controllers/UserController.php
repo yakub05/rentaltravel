@@ -11,10 +11,14 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
-    public function index(){
-        $users = User::all();
-        return view('admin.dataadmin', compact('users'));
+    public function index(Request $request){
+        $keyword = $request->keyword;
+        $users = User::where('nama', 'like', "%$keyword%")
+                        ->orWhere('email', 'like', "%$keyword%")->paginate(10);
+
+        return view('admin.dataadmin', ['users' => $users, 'keyword' => $keyword]);
     }
+
     public function create()
     {
         return view('admin.tambahdataadmin');
@@ -27,6 +31,7 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'telf' => 'required|string|max:15',
+            'user_type' => 'required|in:admin,customer',
         ]);
 
         User::create([
@@ -34,6 +39,7 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'telf' => $request->telf,
+            'user_type' => $request->user_type,
         ]);
         Alert::toast('Admin baru telah ditambahkan', 'success');
         return redirect('/dataadmin');
