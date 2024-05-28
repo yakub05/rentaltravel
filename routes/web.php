@@ -35,7 +35,6 @@ Route::get('/tentang-kami', function () {
 })->name('tentang-kami');
 
 Route::get('/travel', [TravelController::class, 'user_travel'])->name('travel');
-Route::get('/travel-portfolio/{id}', [TravelController::class, 'user_travel_detail'])->name('travel.detail');
 
 Route::get('/login', [AuthController::class,'index'])->name('login');
 Route::post('/login', [AuthController::class,'login'])->name('login');
