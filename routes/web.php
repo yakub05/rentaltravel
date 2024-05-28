@@ -27,6 +27,10 @@ Route::get('/detail-portfolio/{id}', [KontenController::class, 'user_konten_deta
 Route::get('/artikel', [ArtikelController::class, 'user_artikel'])->name('user.artikel');
 Route::get('/detail-artikel/{id}', [ArtikelController::class, 'user_artikel_detail'])->name('user.artikel.detail');
 
+Route::get('/tentang-kami', function () {
+    return view('user/tampil/tentang-kami');
+})->name('tentang-kami');
+
 Route::get('/login', [AuthController::class,'index'])->name('login');
 Route::post('/login', [AuthController::class,'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
