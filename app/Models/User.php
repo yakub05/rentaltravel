@@ -1,5 +1,10 @@
 <?php
 namespace App\Models;
+<<<<<<< HEAD
+=======
+
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+>>>>>>> d861ab583f0dbafae980ce009120c1f2e332542f
 use App\Models\Konten;
 use App\Models\Travel;
 use App\Models\Artikel;
@@ -33,6 +38,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Konten::class, 'id_user');
     }
+
+    public function testimoni()
+    {
+        return $this->hasMany(Testimoni::class, 'id_user');
+    }
+
     public function travel()
     {
         return $this->hasMany(Travel::class, 'id_user');

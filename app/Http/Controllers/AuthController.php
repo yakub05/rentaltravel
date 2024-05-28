@@ -26,9 +26,16 @@ class AuthController extends Controller
 
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+            $user = Auth::user();
+
+            if ($user->user_type == 'admin') {
+                return redirect()->intended('/dashboard');
+            } elseif ($user->user_type == 'customer') {
+                return redirect()->intended('/datatestimoni');
+            }
+            return redirect()->intended('/');
         }
-        
+
         Session::flash('loginError', 'Email atau password salah');
         return back();
     }

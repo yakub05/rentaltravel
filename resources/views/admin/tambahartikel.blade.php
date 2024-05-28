@@ -48,7 +48,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="/datakonten" class="btn btn-warning">Kembali</a>
+                            <a href="/dataartikel" class="btn btn-warning">Kembali</a>
                             <button type="submit" class="btn btn-success">Tambah Artikel</button>
                         </form>
                     </div>

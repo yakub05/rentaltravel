@@ -1,6 +1,6 @@
-@extends('admin.layouts.admin')
+@extends('customer.layouts.customer')
 
-@section('title', 'Dashboard Data Admin')
+@section('title', 'Dashboard Customer')
 
 @section('sidebar')
     @parent
@@ -13,22 +13,12 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h6>Data Konten Website Travel</h6>
-                            <a href="{{ route('tambahkonten') }}" type="button" class="btn btn-primary">
-                                <i class="fas fa-plus"><span class="ms-2" style="text-transform: none;">Tambah
-                                        Konten</span></i>
+                            <h6>Data Testimoni Travel</h6>
+                            <a href="{{ route('tambahtestimoni') }}" type="button" class="btn btn-primary">
+                                <i class="fas fa-plus"><span class="ms-2" style="text-transform: none;">Tambah Testimoni</span></i>
                             </a>
                         </div>
                         <div class="d-flex justify-content-end align-items-center mt-3">
-                            <div class="input-group" style="width: 300px;">
-                                <form action="{{ route('datakonten') }}" method="GET" class="d-flex">
-                                    <span class="input-group-text text-body"><i class="fas fa-search"
-                                            aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control form-control-sm" name="keyword"
-                                        placeholder="Type here..." value="{{ $keyword ?? '' }}">
-                                    <button class="btn btn-primary" type="submit">Search</button>
-                                </form>
-                            </div>
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
@@ -41,56 +31,36 @@
                                             No</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Foto</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Judul</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Deskripsi</th>
+                                            Komentar</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Tanggal Dibuat</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Tanggal Diupdate</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($konten as $konten)
+                                    @foreach ($testimoni as $testimoni)
                                         <tr>
                                             <td class="align-middle text-center text-sm">
                                                 <span
                                                     class="text-secondary text-xs font-weight-bold">{{ $loop->iteration }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <img src="{{ Storage::url($konten->foto) }}" alt="Foto Artikel"
-                                                    class="img-fluid">
+                                                <span
+                                                    class="text-secondary text-xs font-weight-bold">{{ $testimoni->komentar }}
+                                                </span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $konten->judul }}</span>
+                                                    class="badge badge-sm bg-gradient-success">{{ $testimoni->created_at }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <span
-                                                    class="text-secondary text-xs font-weight-bold">{!! Str::limit($konten->deskripsi, 50) !!}</span>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span
-                                                    class="badge badge-sm bg-gradient-success">{{ $konten->created_at }}</span>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span
-                                                    class="badge badge-sm bg-gradient-success">{{ $konten->updated_at }}</span>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <a href="{{ route('editkonten', $konten->id) }}" type="button"
+                                                <a href="{{ route('edittestimoni', $testimoni->id) }}" type="button"
                                                     class="btn btn-warning btn-sm me-2" data-toggle="tooltip"
                                                     data-original-title="Edit user">Edit</a>
-                                                <form action="{{ route('deletekonten', $konten->id) }}" method="POST"
+                                                <form action="{{ route('deletetestimoni', $testimoni->id) }}" method="POST"
                                                     style="display:inline-block;">
                                                     @csrf
                                                     @method('DELETE')

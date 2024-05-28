@@ -21,13 +21,6 @@ class ArtikelController extends Controller
         $artikel = Artikel::where('judul', 'like', "%$keyword%")
                         ->orWhere('deskripsi', 'like', "%$keyword%")->paginate(10);
 
-        Log::info('Artikels:', $artikel->toArray());
-
-        // Batasi deskripsi untuk setiap artikel
-        // foreach ($artikel as $artikel) {
-        //     $artikel->deskripsi = Str::limit($artikel->deskripsi, 200);
-        // }
-
         return view('admin/dataartikel', ['artikel' => $artikel, 'keyword' => $keyword]);
     }
 
@@ -44,13 +37,14 @@ class ArtikelController extends Controller
 
             $validatedData = $request->validate([
                 'judul' => 'required',
-                'foto' => 'required|image',
                 'deskripsi' => 'required',
+                'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
             ], [
                 'judul.required' => 'Judul artikel harus diisi.',
-                'foto.required' => 'Gambar artikel harus diunggah.',
-                'foto.image' => 'File yang diunggah harus berupa gambar.',
                 'deskripsi.required' => 'Deskripsi artikel harus diisi.',
+                'foto.image' => 'File yang diunggah harus berupa gambar.',
+                'foto.mimes' => 'Format gambar harus jpeg, png, jpg, atau gif.',
+                'foto.max' => 'Ukuran gambar tidak boleh melebihi 2MB.',
             ]);
             $fotoPath = $request->file('foto')->store('foto_artikel', 'public');
 
@@ -73,6 +67,54 @@ class ArtikelController extends Controller
         }
     }
 
+    public function edit($id)
+    {
+        $artikel = Artikel::findOrFail($id);
+        $userName = Auth::user()->nama;
+
+        return view('admin/editartikel', ['artikel' => $artikel, 'userName' => $userName]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $validatedData = $request->validate([
+                'judul' => 'required',
+                'deskripsi' => 'required',
+                'foto' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            ], [
+                'judul.required' => 'Judul artikel harus diisi.',
+                'deskripsi.required' => 'Deskripsi artikel harus diisi.',
+                'foto.image' => 'File yang diunggah harus berupa gambar.',
+                'foto.mimes' => 'Format gambar harus jpeg, png, jpg, atau gif.',
+                'foto.max' => 'Ukuran gambar tidak boleh melebihi 2MB.',
+            ]);
+
+            $artikel = Artikel::findOrFail($id);
+            $artikel->judul = $validatedData['judul'];
+            $artikel->deskripsi = $validatedData['deskripsi'];
+
+            if ($request->hasFile('foto')) {
+                if ($artikel->foto) {
+                    Storage::delete('public/' . $artikel->foto);
+                }
+                $fotoPath = $request->file('foto')->store('foto_artikel', 'public');
+                $artikel->foto = $fotoPath;
+            }
+
+            $artikel->save();
+
+            Alert::toast('Artikel telah diperbarui', 'success');
+            return redirect('/dataartikel');
+        } catch (ValidationException $th) {
+            Alert::error('Gagal', $th->validator->errors()->first());
+            return redirect()->back();
+        } catch (Exception $e) {
+            Alert::error('Gagal', 'Terjadi kesalahan saat memperbarui artikel.');
+            return redirect()->back();
+        }
+    }
+
     public function destroy($id)
     {
         try {
@@ -90,5 +132,17 @@ class ArtikelController extends Controller
             Alert::error('Gagal', 'Terjadi kesalahan saat menghapus artikel.');
             return redirect()->route('dataartikel');
         }
+    }
+
+    public function user_artikel()
+    {
+        $artikel = Artikel::orderBy('id', 'desc')->get();
+        return view('user/tampil/artikel', compact('artikel'));
+    }
+
+    public function user_artikel_detail($id)
+    {
+        $artikel = Artikel::findOrFail($id);
+        return view('user/tampil/detail-artikel', compact('artikel'));
     }
 }

@@ -7,7 +7,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <title>
-        Dahboard Admin Travel
+        Dahboard Customer
     </title>
     <!-- Fonts and icons -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -50,11 +50,11 @@
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
-    @include('admin.layouts.components.sidebar')
+    @include('customer.layouts.components.sidebar')
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-        @include('admin.layouts.components.navbar')
+        @include('customer.layouts.components.navbar')
         @yield('content')
-        @include('admin.layouts.components.footer')
+        @include('customer.layouts.components.footer')
         @include('sweetalert::alert')
     </main>
 

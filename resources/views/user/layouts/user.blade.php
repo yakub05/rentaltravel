@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Travel</title>
+    <title>Overland Trans</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -34,7 +34,7 @@
 
             <a href="index.html" class="logo d-flex align-items-center">
                 <img src="../assets/home/img/logo.png" alt="">
-                <span>Travel</span>
+                <span>Overland Trans</span>
             </a>
             @include('user.layouts.components.navbar')
         </div>
@@ -43,7 +43,7 @@
     <body class="g-sidenav-show  bg-gray-100">
         <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
             @yield('content')
-            {{-- @include('user.layouts.components.footer') --}}
+            @include('user.layouts.components.footer')
         </main>
 
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i

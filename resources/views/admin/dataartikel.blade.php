@@ -13,7 +13,7 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h6>Data Konten Website Travel</h6>
+                            <h6>Data Artikel Website Travel</h6>
                             <a href="{{ route('tambahartikel') }}" type="button" class="btn btn-primary">
                                 <i class="fas fa-plus"><span class="ms-2" style="text-transform: none;">Tambah
                                         Artikel</span></i>
@@ -53,6 +53,9 @@
                                             Tanggal Dibuat</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Tanggal Diupdate</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Aksi</th>
                                     </tr>
                                 </thead>
@@ -64,7 +67,8 @@
                                                     class="text-secondary text-xs font-weight-bold">{{ $loop->iteration }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <img src="{{ Storage::url($artikel->foto) }}" alt="Foto Artikel" class="img-fluid">
+                                                <img src="{{ Storage::url($artikel->foto) }}" alt="Foto Artikel"
+                                                    class="img-fluid">
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
@@ -72,11 +76,16 @@
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{!!Str::limit($artikel->deskripsi,50)!!}</</span>
+                                                    class="text-secondary text-xs font-weight-bold">{!! Str::limit($artikel->deskripsi, 50) !!}
+                                                </span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
                                                     class="badge badge-sm bg-gradient-success">{{ $artikel->created_at }}</span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span
+                                                    class="badge badge-sm bg-gradient-success">{{ $artikel->updated_at }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <a href="{{ route('editartikel', $artikel->id) }}" type="button"
