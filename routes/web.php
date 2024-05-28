@@ -41,37 +41,13 @@ Route::post('/login', [AuthController::class,'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
-<<<<<<< HEAD
-
-    Route::get('/dashboard', function () {
-        return view('admin/dashboard');
-    })->name('dashboard')->middleware('auth');;
-
-=======
     Route::get('/dashboard', [DashboardController::class, 'index'])
     ->name('dashboard')->middleware('auth');
-    
->>>>>>> d861ab583f0dbafae980ce009120c1f2e332542f
+
     Route::get('/admin', function () {
         return view('admin/layouts/admin');
     })->name('layouts/admin');
 
-<<<<<<< HEAD
-    Route::get('/dataadmin', [UserController::class, 'index']);
-    Route::get('tambahdataadmin', [UserController::class, 'create'])->name('tambahdataadmin');
-    Route::post('tambahdataadmin', [UserController::class, 'store']);
-    Route::get('/editadmin/{id}', [UserController::class, 'edit'])->name('editadmin');
-    Route::put('/editadmin/{id}', [UserController::class, 'update'])->name('update');
-    Route::delete('deleteadmin/{id}', [UserController::class, 'destroy'])->name('deleteadmin');
-
-    Route::get('/tambahdataadmin', function () {
-        return view('admin/tambahdataadmin');
-    })->name('tambahdataadmin');
-
-    Route::get('/editadmin', function () {
-        return view('admin/editadmin');
-    })->name('editadmin');
-=======
     //Data Admin
     Route::get('/dataadmin', [UserController::class, 'index']);
 
@@ -82,7 +58,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/editadmin/{id}', [UserController::class, 'update'])->name('updateadmin');
 
     Route::delete('deleteadmin/{id}', [UserController::class, 'destroy'])->name('deleteadmin');
->>>>>>> d861ab583f0dbafae980ce009120c1f2e332542f
 
     //Data Rental Travel
     Route::get('/datarentaltravel', [TravelController::class, 'index']);
@@ -90,15 +65,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/tambahrental', [TravelController::class, 'create'])->name('tambahrental');
     Route::post('/tambahrental', [TravelController::class, 'store']);
 
-<<<<<<< HEAD
-    Route::get('/editrental', function () {
-        return view('admin/editrental');
-    })->name('editrental');
-=======
     Route::get('/editrental/{id}', [TravelController::class, 'edit'])->name('editrental');
     Route::put('/editrental/{id}', [TravelController::class, 'update'])->name('updaterental');
 
->>>>>>> d861ab583f0dbafae980ce009120c1f2e332542f
     Route::delete('deletetravel/{id}', [TravelController::class, 'destroy'])->name('deletetravel');
 
     //Data Konten
@@ -122,8 +91,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/editartikel/{id}', [ArtikelController::class, 'update'])->name('updateartikel');
 
     Route::delete('/deleteartikel/{id}', [ArtikelController::class, 'destroy'])->name('deleteartikel');
-<<<<<<< HEAD
-=======
 
     //Data Testimoni
     Route::get('/datatestimoni', [TestimoniController::class, 'index'])->name('datatestimoni');
@@ -135,5 +102,4 @@ Route::middleware('auth')->group(function () {
     Route::put('/edittestimoni/{id}', [TestimoniController::class, 'update'])->name('updatetestimoni');
 
     Route::delete('/deletetestimoni/{id}', [TestimoniController::class, 'destroy'])->name('deletetestimoni');
->>>>>>> d861ab583f0dbafae980ce009120c1f2e332542f
 });
