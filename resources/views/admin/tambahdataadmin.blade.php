@@ -7,58 +7,68 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid py-4">
-        <div class="row">
-            <div class="col-12">
-                <form>
-                    <div class="card">
-                        <div class="card-header pb-0">
-                            <div class="d-flex align-items-center">
-                                <h5 class="mb-0">Tambah Data Admin</h5>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <form>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Nama</label>
-                                            <input class="form-control" type="text" value="lucky.jesse">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Email address</label>
-                                            <input class="form-control" type="email" value="jesse@example.com">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">Password</label>
-                                            <input class="form-control" type="email" value="">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="example-text-input" class="form-control-label">No. Telp</label>
-                                            <input class="form-control" type="email" value="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label for="user_type">Tipe Pengguna:</label>
-                                        <select class="form-control" id="user_type" name="user_type">
-                                            <option value="admin">Admin</option>
-                                            <option value="merchant">Merchant</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <a href="/dataadmin" class="btn btn-warning">Kembali</a>
-                                <button type="submit" class="btn btn-success">Tambah Admin</button>
-                            </form>
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <form method="post" action="{{ route('tambahdataadmin') }}">
+                @csrf
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <div class="d-flex align-items-center">
+                            <h5 class="mb-0">Tambah Data Admin</h5>
                         </div>
                     </div>
-            </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="nama" class="form-control-label">Nama Admin</label>
+                                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama" required>
+                                    @error('nama')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="email" class="form-control-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                                    @error('email')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="password" class="form-control-label">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                                    @error('password')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="password_confirmation" class="form-control-label">Confirm Password</label>
+                                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password" required>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="telf" class="form-control-label">No. Telp</label>
+                                    <input type="text" class="form-control" id="telf" name="telf" placeholder="Nomor Telepon" required>
+                                    @error('telf')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/dataadmin" class="btn btn-warning">Kembali</a>
+                        <button type="submit" class="btn btn-success">Tambah Admin</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-    </div>
+</div>
 @endsection

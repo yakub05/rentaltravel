@@ -30,41 +30,51 @@
                   <tr>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nama</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Role</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No Telp.</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">created at</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">update at</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                   </tr>
                 </thead>
                 <tbody>
+                    @foreach ($users as $user)
                   <tr>
                     <td class="align-middle text-center text-sm">
-                        <span class="text-secondary text-xs font-weight-bold">1</span>
+                        <span class="text-secondary text-xs font-weight-bold">{{ $loop->iteration }}</span>
                       </td>
                     <td>
                       <div class="d-flex px-2 py-1">
 
                         <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">John Michael</h6>
-                          <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
+                          <h6 class="mb-0 text-sm">{{ $user->nama }}</h6>
+                          <p class="text-xs text-secondary mb-0">{{$user->email}}</p>
                         </div>
                       </div>
                     </td>
 
                     <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success">Online</span>
+                      <span class="text-secondary text-xs font-weight-bold">{{$user->telf}}</span>
                     </td>
                     <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                      <span class="text-secondary text-xs font-weight-bold">{{$user->created_at}}</span>
                     </td>
+                    <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold">{{$user->updated_at}}</span>
+                      </td>
                     <td class="align-middle">
-                        <a href="/editadmin" type="button" class="btn btn-warning btn-sm me-2" data-toggle="tooltip" data-original-title="Edit user">
+                        <a href="/editadmin/{{$user->id}}" type="button" class="btn btn-warning btn-sm me-2" data-toggle="tooltip" data-original-title="Edit user">
                             Edit
                         </a>
-                        <button type="button" class="btn btn-danger btn-sm me-2" data-toggle="tooltip" data-original-title="Delete user">
+                        <form id="delete-form-{{ $user->id }}" action="{{ route('deleteadmin', $user->id) }}" method="POST" style="display: none;">
+                            @csrf
+                            @method('DELETE')
+                        </form>
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-original-title="Delete user" onclick="confirmDelete({{ $user->id }})">
                             Delete
                         </button>
                     </td>
                   </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>
@@ -73,4 +83,21 @@
       </div>
     </div>
   </div>
+  <script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Kamu Yakin Mau hapus data ini?',
+            text: "Kamu Akan Menghapus Data ini!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya hapus data ini!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + id).submit();
+            }
+        })
+    }
+    </script>
 @endsection
