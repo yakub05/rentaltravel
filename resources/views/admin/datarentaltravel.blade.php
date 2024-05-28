@@ -21,7 +21,7 @@
                         </div>
                         <div class="d-flex justify-content-end align-items-center mt-3">
                             <div class="input-group" style="width: 300px;">
-                                <form action="{{ route('datakonten') }}" method="GET" class="d-flex">
+                                <form action="{{ route('datarentaltravel') }}" method="GET" class="d-flex">
                                     <span class="input-group-text text-body"><i class="fas fa-search"
                                             aria-hidden="true"></i></span>
                                     <input type="text" class="form-control form-control-sm" name="keyword"
