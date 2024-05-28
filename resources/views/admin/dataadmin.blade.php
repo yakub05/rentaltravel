@@ -34,8 +34,8 @@
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nama</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No Telp.</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Role</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Dibuat</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Diupdate</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
                                     </tr>
                                 </thead>
@@ -56,11 +56,11 @@
                                             <td class="align-middle text-center text-sm">
                                                 <span class="text-secondary text-xs font-weight-bold">{{ $user->telf }}</span>
                                             </td>
-                                            <td class="align-middle text-center">
-                                                <span class="text-secondary text-xs font-weight-bold">{{ $user->created_at }}</span>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="badge badge-sm bg-gradient-success">{{ $user->user_type }}</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-secondary text-xs font-weight-bold">{{ $user->updated_at }}</span>
+                                                <span class="text-secondary text-xs font-weight-bold">{{ $user->created_at }}</span>
                                             </td>
                                             <td class="align-middle">
                                                 <a href="/editadmin/{{ $user->id }}" type="button" class="btn btn-warning btn-sm me-2" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
@@ -78,6 +78,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <div class="card-footer clearfix">
+                                {{ $users->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>
