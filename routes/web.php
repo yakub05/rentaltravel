@@ -41,6 +41,9 @@ Route::get('/testimoni', [TestimoniController::class, 'user_testimoni'])->name('
 Route::get('/login', [AuthController::class,'index'])->name('login');
 Route::post('/login', [AuthController::class,'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/register', function () {
+    return view('register');
+})->name('register');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])
