@@ -86,7 +86,7 @@
                                                     class="badge badge-sm bg-gradient-success">{{ $travel->telp }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <a href="/editrental" type="button"
+                                                <a href="{{ route('editrental', $travel->id) }}" type="button"
                                                     class="btn btn-warning btn-sm me-2" data-toggle="tooltip"
                                                     data-original-title="Edit user">Edit</a>
                                                     <form id="delete-form-{{ $travel->id }}" action="{{ route('deletetravel', $travel->id) }}" method="POST" style="display: none;">

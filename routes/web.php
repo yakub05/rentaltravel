@@ -67,9 +67,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/tambahrental', [TravelController::class, 'create'])->name('tambahrental');
     Route::post('/tambahrental', [TravelController::class, 'store']);
 
-    Route::get('/editrental', function () {
-        return view('admin/editrental');
-    })->name('editrental');
+    Route::get('/editrental/{id}', [TravelController::class, 'edit'])->name('editrental');
+    Route::put('/editrental/{id}', [TravelController::class, 'update'])->name('updaterental');
+
     Route::delete('deletetravel/{id}', [TravelController::class, 'destroy'])->name('deletetravel');
 
     //Data Konten

@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="card-header pb-0">
                         <div class="d-flex align-items-center">
-                            <h5 class="mb-0">Tambah Konten Travel</h5>
+                            <h5 class="mb-0">Tambah Rental Travel</h5>
                         </div>
                     </div>
                     <div class="card-body">
