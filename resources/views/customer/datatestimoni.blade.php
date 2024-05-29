@@ -38,9 +38,6 @@
                                             Tanggal Dibuat</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Tanggal Diubah</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Aksi</th>
                                     </tr>
                                 </thead>
@@ -59,10 +56,6 @@
                                             <td class="align-middle text-center text-sm">
                                                 <span
                                                     class="badge badge-sm bg-gradient-success">{{ $testimoni->created_at }}</span>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span
-                                                    class="badge badge-sm bg-gradient-success">{{ $testimoni->updated_at }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <a href="/edittestimoni/{{ $testimoni->id }}" type="button"
