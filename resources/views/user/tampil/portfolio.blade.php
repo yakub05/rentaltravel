@@ -12,7 +12,9 @@
                     @foreach($konten as $konten)
                         <div class="col-lg-4 col-md-6 portfolio-item">
                             <div class="portfolio-wrap">
-                                <img src="{{ Storage::url($konten->foto) }}" class="img-fluid" alt="{{ $konten->judul }}">
+                                <div class="image-wrapper">
+                                    <img src="{{ Storage::url($konten->foto) }}" class="img-fluid" alt="{{ $konten->judul }}">
+                                </div>
                                 <div class="portfolio-info">
                                     <h4>{{ $konten->judul }}</h4>
                                     <div class="portfolio-links">
