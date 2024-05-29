@@ -98,15 +98,6 @@
                                                     onclick="confirmDelete({{ $artikel->id }})">
                                                     Delete
                                                 </button>
-
-                                                {{-- <form action="{{ route('deleteartikel', $artikel->id) }}" method="POST"
-                                                    style="display:inline-block;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm me-2"
-                                                        data-toggle="tooltip" data-original-title="Delete user"
-                                                        onclick="return confirm('Apakah Anda yakin ingin menghapus konten ini?')">Hapus</button>
-                                                </form> --}}
                                             </td>
                                         </tr>
                                     @endforeach
