@@ -65,7 +65,7 @@
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <img src="{{ Storage::url($item->foto) }}" alt="Foto Artikel"
-                                                    class="img-fluid">
+                                                    class="img-fluid" style="max-width: 100px; height: auto;">
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
