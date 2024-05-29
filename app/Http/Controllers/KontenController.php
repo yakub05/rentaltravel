@@ -18,7 +18,7 @@ class KontenController extends Controller
     {
         $keyword = $request->keyword;
         $konten = Konten::where('judul', 'like', "%$keyword%")
-                        ->orWhere('deskripsi', 'like', "%$keyword%")->paginate(10);
+                        ->orWhere('deskripsi', 'like', "%$keyword%")->paginate(3);
         return view('admin/datakonten', ['konten' => $konten, 'keyword' => $keyword]);
     }
 

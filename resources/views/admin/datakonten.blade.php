@@ -57,43 +57,43 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($konten as $konten)
+                                    @foreach ($konten as $index => $item)
                                         <tr>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $loop->iteration }}</span>
+                                                    class="text-secondary text-xs font-weight-bold">{{ ($konten->currentPage() - 1) * $konten->perPage() + $loop->iteration }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <img src="{{ Storage::url($konten->foto) }}" alt="Foto Artikel"
-                                                    class="img-fluid">
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $konten->judul }}</span>
+                                                <img src="{{ Storage::url($item->foto) }}" alt="Foto Artikel"
+                                                    class="img-fluid" style="max-width: 100px; height: auto;">
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{!! Str::limit($konten->deskripsi, 50) !!}</span>
+                                                    class="text-secondary text-xs font-weight-bold">{{ $item->judul }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="badge badge-sm bg-gradient-success">{{ $konten->created_at }}</span>
+                                                    class="text-secondary text-xs font-weight-bold">{!! Str::limit($item->deskripsi, 50) !!}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <a href="/editkonten/{{ $konten->id }}" type="button"
+                                                <span
+                                                    class="badge badge-sm bg-gradient-success">{{ $item->created_at }}</span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <a href="/editkonten/{{ $item->id }}" type="button"
                                                     class="btn btn-warning btn-sm me-2" data-bs-toggle="tooltip"
                                                     data-bs-original-title="Edit konten">
                                                     Edit
                                                 </a>
-                                                <form id="delete-form-{{ $konten->id }}"
-                                                    action="{{ route('deletekonten', $konten->id) }}" method="POST"
+                                                <form id="delete-form-{{ $item->id }}"
+                                                    action="{{ route('deletekonten', $item->id) }}" method="POST"
                                                     style="display: none;">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
                                                 <button type="button" class="btn btn-danger btn-sm"
                                                     data-bs-toggle="tooltip" data-bs-original-title="Delete konten"
-                                                    onclick="confirmDelete({{ $konten->id }})">
+                                                    onclick="confirmDelete({{ $item->id }})">
                                                     Delete
                                                 </button>
                                             </td>
@@ -101,9 +101,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            {{-- <div class="card-footer clearfix">
+                            <div class="card-footer clearfix">
                                 {{ $konten->links() }}
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
