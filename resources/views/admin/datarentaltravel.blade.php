@@ -63,50 +63,51 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($travel as $travel)
+                                    @foreach ($travel as $index => $item)
                                         <tr>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $loop->iteration }}</span>
+                                                    class="text-secondary text-xs font-weight-bold">{{ ($travel->currentPage() - 1) * $travel->perPage() + $loop->iteration }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $travel->nama_travel }}</span>
+                                                    class="text-secondary text-xs font-weight-bold">{{ $item->nama_travel }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <img src="{{ Storage::url($travel->foto) }}" alt="Foto Artikel"
+                                                <img src="{{ Storage::url($item->foto) }}" alt="Foto Artikel"
                                                     class="img-fluid">
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $travel->tujuan }}</span>
+                                                    class="text-secondary text-xs font-weight-bold">{{ $item->tujuan }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{!! Str::limit($travel->deskripsi, 25) !!}</span>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <span class="text-secondary text-xs font-weight-bold">{{ $travel->telp }}</span>
+                                                    class="text-secondary text-xs font-weight-bold">{!! Str::limit($item->deskripsi, 25) !!}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="badge badge-sm bg-gradient-success">{{ $travel->created_at }}</span>
+                                                    class="text-secondary text-xs font-weight-bold">{{ $item->telp }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <a href="/editrental/{{ $travel->id }}" type="button"
+                                                <span
+                                                    class="badge badge-sm bg-gradient-success">{{ $item->created_at }}</span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <a href="/editrental/{{ $item->id }}" type="button"
                                                     class="btn btn-warning btn-sm me-2" data-bs-toggle="tooltip"
                                                     data-bs-original-title="Edit travel">
                                                     Edit
                                                 </a>
-                                                <form id="delete-form-{{ $travel->id }}"
-                                                    action="{{ route('deletetravel', $travel->id) }}" method="POST"
+                                                <form id="delete-form-{{ $item->id }}"
+                                                    action="{{ route('deletetravel', $item->id) }}" method="POST"
                                                     style="display: none;">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
                                                 <button type="button" class="btn btn-danger btn-sm"
                                                     data-bs-toggle="tooltip" data-bs-original-title="Delete travel"
-                                                    onclick="confirmDelete({{ $travel->id }})">
+                                                    onclick="confirmDelete({{ $item->id }})">
                                                     Delete
                                                 </button>
                                             </td>
@@ -114,9 +115,9 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            {{-- <div class="card-footer clearfix">
-                                {{ $konten->links() }}
-                            </div> --}}
+                            <div class="card-footer clearfix">
+                                {{ $travel->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>

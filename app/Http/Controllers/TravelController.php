@@ -16,7 +16,7 @@ class TravelController extends Controller
     public function index(Request $request){
         $keyword = $request->keyword;
         $travel = Travel::where('nama_travel', 'like', "%$keyword%")
-                        ->orWhere('deskripsi', 'like', "%$keyword%")->paginate(10);
+                        ->orWhere('deskripsi', 'like', "%$keyword%")->paginate(3);
 
         return view('admin.datarentaltravel', ['travel' => $travel, 'keyword' => $keyword]);
     }
