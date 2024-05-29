@@ -74,7 +74,7 @@
                                 </tbody>
                             </table>
                             {{-- <div class="card-footer clearfix">
-                                {{ $konten->links() }}
+                                {{ $testimoni->links() }}
                             </div> --}}
                         </div>
                     </div>
