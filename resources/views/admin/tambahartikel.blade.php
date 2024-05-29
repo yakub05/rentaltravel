@@ -43,7 +43,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="deskripsi" class="form-control-label">Deskripsi Artikel</label>
-                                        <textarea class="form-control" id="deskripsi" name="deskripsi" rows="4" placeholder="Masukkan Deskripsi Artikel"
+                                        <textarea class="form-control" id="summernote" name="deskripsi" rows="4" placeholder="Masukkan Deskripsi Artikel"
                                             required></textarea>
                                     </div>
                                 </div>

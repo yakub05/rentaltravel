@@ -23,7 +23,7 @@
                                     <td class="align-middle text-center"><img src="{{ Storage::url($item->foto) }}" alt="Foto Travel" class="img-fluid" style="max-width: 300px; max-height: 300px;"></td>
                                     <td class="align-middle text-center">{{ $item->nama_travel }}</td>
                                     <td class="align-middle text-center">{{ $item->tujuan }}</td>
-                                    <td class="align-middle">{!! $item->deskripsi !!}</td> 
+                                    <td class="align-middle">{!! $item->deskripsi !!}</td>
                                     {{-- <td class="align-middle text-center">
                                         <a href="https://wa.me/{{ $item->telp }}" class="btn btn-success" target="_blank">
                                             <i class="fab fa-whatsapp"></i> Chat
@@ -41,12 +41,11 @@
                                     <td class="align-middle text-center">
                                         @php
                                             $message = "Hai saya ingin memesan travel " . $item->nama_travel . " dengan tujuan " . $item->tujuan . ".";
-                                            $phone_number = preg_replace('/^0/', '62', $item->telp); 
+                                            $phone_number = preg_replace('/^0/', '62', $item->telp);
                                             $url = "https://wa.me/" . $phone_number . "?text=" . urlencode($message);
                                         @endphp
                                         <a href="{{ $url }}" class="btn btn-success" target="_blank">
-                                            <i class="fab fa-whatsapp"></i> Chat
-                                        </a>
+                                            <i class="fas fa-whatsapp">Chat</i>
                                     </td>
                                 </tr>
                             @endforeach

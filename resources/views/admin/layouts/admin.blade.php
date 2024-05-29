@@ -31,8 +31,9 @@
     <script href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css"></script>
 
     <!-- Summernote CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <!-- include summernote css/js-->
+    <link href="summernote-bs5.css" rel="stylesheet">
+    <script src="summernote-bs5.js"></script>
 
     <style>
         body {
@@ -57,6 +58,13 @@
         @include('admin.layouts.components.footer')
         @include('sweetalert::alert')
     </main>
+    <script>
+        $('#summernote').summernote({
+          placeholder: 'Hello Bootstrap 5',
+          tabsize: 2,
+          height: 100
+        });
+      </script>
 
     <script src="../assets/js/core/popper.min.js"></script>
     <script src="../assets/js/core/bootstrap.min.js"></script>

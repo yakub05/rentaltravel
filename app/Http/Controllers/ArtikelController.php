@@ -19,7 +19,7 @@ class ArtikelController extends Controller
     {
         $keyword = $request->keyword;
         $artikel = Artikel::where('judul', 'like', "%$keyword%")
-                        ->orWhere('deskripsi', 'like', "%$keyword%")->paginate(10);
+                        ->orWhere('deskripsi', 'like', "%$keyword%")->paginate(3);
 
         return view('admin/dataartikel', ['artikel' => $artikel, 'keyword' => $keyword]);
     }

@@ -18,12 +18,12 @@
                     @foreach($artikel as $artikel)
                     <article class="entry">
                         <div class="entry-img">
-                            <img src="{{ Storage::url($artikel->foto) }}" alt="{{ $artikel->judul }}" class="img-fluid">
+                            <img src="{{ Storage::url($artikel->foto) }}" alt="{{ $artikel->judul }}" class="img-fluid" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
                         </div>
                         <h2 class="entry-title">
                             <a href="{{ route('user.artikel.detail', $artikel->id) }}">{{ $artikel->judul }}</a>
                         </h2>
-                        
+
                         <div class="entry-meta">
                             <ul>
                                 <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a>{{ $artikel->user->nama }}</a></li>
