@@ -1306,6 +1306,22 @@ section {
 }
 
 
+/* New CSS for centering the image */
+
+.portfolio .image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.portfolio .image-wrapper img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
 /*--------------------------------------------------------------
 # Portfolio Details
 --------------------------------------------------------------*/
