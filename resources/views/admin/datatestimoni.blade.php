@@ -28,6 +28,9 @@
                                             No</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Nama Customer</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Komentar</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -35,28 +38,31 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($testimoni as $testimoni)
+                                    @foreach ($testimoni as $index => $item)
                                         <tr>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $loop->iteration }}</span>
+                                                    class="text-secondary text-xs font-weight-bold">{{ ($testimoni->currentPage() - 1) * $testimoni->perPage() + $loop->iteration }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $testimoni->komentar }}
+                                                    class="text-secondary text-xs font-weight-bold">{{ $item->user->nama ?? 'N/A' }}</span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <span class="text-secondary text-xs font-weight-bold">{{ $item->komentar }}
                                                 </span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="badge badge-sm bg-gradient-success">{{ $testimoni->created_at }}</span>
+                                                    class="badge badge-sm bg-gradient-success">{{ $item->created_at }}</span>
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-                            {{-- <div class="card-footer clearfix">
-                                {{ $konten->links() }}
-                            </div> --}}
+                            <div class="card-footer clearfix">
+                                {{ $testimoni->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>

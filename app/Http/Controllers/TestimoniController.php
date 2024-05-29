@@ -16,13 +16,13 @@ class TestimoniController extends Controller
     public function index(Request $request)
     {
         $userId = Auth::id();
-        $testimoni = Testimoni::where('id_user', $userId)->get();
+        $testimoni = Testimoni::where('id_user', $userId)->paginate(3);
         return view('customer/datatestimoni', compact('testimoni'));
     }
 
     public function index_admin(Request $request)
     {
-        $testimoni = Testimoni::all();
+        $testimoni = Testimoni::paginate(3);
         return view('admin/datatestimoni', compact('testimoni'));
     }
 
