@@ -57,55 +57,49 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($artikel as $artikel)
+                                    @foreach ($artikel as $index => $item)
                                         <tr>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $loop->iteration }}</span>
+                                                    class="text-secondary text-xs font-weight-bold">{{ ($artikel->currentPage() - 1) * $artikel->perPage() + $loop->iteration }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <img src="{{ Storage::url($artikel->foto) }}" alt="Foto Artikel"
+                                                <img src="{{ Storage::url($item->foto) }}" alt="Foto Artikel"
                                                     class="img-fluid">
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{{ $artikel->judul }}</span>
+                                                    class="text-secondary text-xs font-weight-bold">{{ $item->judul }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="text-secondary text-xs font-weight-bold">{!! Str::limit($artikel->deskripsi, 50) !!}
-                                                </span>
+                                                    class="text-secondary text-xs font-weight-bold">{!! Str::limit($item->deskripsi, 50) !!}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <span
-                                                    class="badge badge-sm bg-gradient-success">{{ $artikel->created_at }}</span>
+                                                    class="badge badge-sm bg-gradient-success">{{ $item->created_at }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <a href="/editartikel/{{ $artikel->id }}" type="button"
+                                                <a href="/editartikel/{{ $item->id }}" type="button"
                                                     class="btn btn-warning btn-sm me-2" data-bs-toggle="tooltip"
-                                                    data-bs-original-title="Edit artikel">
-                                                    Edit
-                                                </a>
-
-                                                <form id="delete-form-{{ $artikel->id }}"
-                                                    action="{{ route('deleteartikel', $artikel->id) }}" method="POST"
+                                                    data-bs-original-title="Edit artikel">Edit</a>
+                                                <form id="delete-form-{{ $item->id }}"
+                                                    action="{{ route('deleteartikel', $item->id) }}" method="POST"
                                                     style="display: none;">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
                                                 <button type="button" class="btn btn-danger btn-sm"
                                                     data-bs-toggle="tooltip" data-bs-original-title="Delete artikel"
-                                                    onclick="confirmDelete({{ $artikel->id }})">
-                                                    Delete
-                                                </button>
+                                                    onclick="confirmDelete({{ $item->id }})">Delete</button>
                                             </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
-                            {{-- <div class="card-footer clearfix">
-                                {{ $konten->links() }}
-                            </div> --}}
+                            <div class="card-footer clearfix">
+                                {{ $artikel->links() }}
+                            </div>
                         </div>
                     </div>
                 </div>
