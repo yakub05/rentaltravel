@@ -16,7 +16,7 @@ class TestimoniController extends Controller
     public function index(Request $request)
     {
         $userId = Auth::id();
-        $testimoni = Testimoni::where('id', $userId)->get();
+        $testimoni = Testimoni::where('id_user', $userId)->get();
         return view('customer/datatestimoni', compact('testimoni'));
     }
 

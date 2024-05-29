@@ -15,7 +15,8 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <h6>Data Testimoni Travel</h6>
                             <a href="{{ route('tambahtestimoni') }}" type="button" class="btn btn-primary">
-                                <i class="fas fa-plus"><span class="ms-2" style="text-transform: none;">Tambah Testimoni</span></i>
+                                <i class="fas fa-plus"><span class="ms-2" style="text-transform: none;">Tambah
+                                        Testimoni</span></i>
                             </a>
                         </div>
                         <div class="d-flex justify-content-end align-items-center mt-3">
@@ -35,6 +36,9 @@
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Tanggal Dibuat</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Tanggal Diubah</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Aksi</th>
@@ -57,17 +61,26 @@
                                                     class="badge badge-sm bg-gradient-success">{{ $testimoni->created_at }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <a href="{{ route('edittestimoni', $testimoni->id) }}" type="button"
-                                                    class="btn btn-warning btn-sm me-2" data-toggle="tooltip"
-                                                    data-original-title="Edit user">Edit</a>
-                                                <form action="{{ route('deletetestimoni', $testimoni->id) }}" method="POST"
-                                                    style="display:inline-block;">
+                                                <span
+                                                    class="badge badge-sm bg-gradient-success">{{ $testimoni->updated_at }}</span>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <a href="/edittestimoni/{{ $testimoni->id }}" type="button"
+                                                    class="btn btn-warning btn-sm me-2" data-bs-toggle="tooltip"
+                                                    data-bs-original-title="Edit testimoni">
+                                                    Edit
+                                                </a>
+                                                <form id="delete-form-{{ $testimoni->id }}"
+                                                    action="{{ route('deletetestimoni', $testimoni->id) }}" method="POST"
+                                                    style="display: none;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm me-2"
-                                                        data-toggle="tooltip" data-original-title="Delete user"
-                                                        onclick="return confirm('Apakah Anda yakin ingin menghapus konten ini?')">Hapus</button>
                                                 </form>
+                                                <button type="button" class="btn btn-danger btn-sm"
+                                                    data-bs-toggle="tooltip" data-bs-original-title="Delete testimoni"
+                                                    onclick="confirmDelete({{ $testimoni->id }})">
+                                                    Delete
+                                                </button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -82,4 +95,22 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Kamu Yakin Mau hapus data ini?',
+                text: "Kamu Akan Menghapus Data ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya hapus data ini!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form-' + id).submit();
+                }
+            })
+        }
+    </script>
 @endsection
