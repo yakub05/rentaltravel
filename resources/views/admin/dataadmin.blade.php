@@ -14,13 +14,16 @@
                     <div class="card-header pb-0">
                         <div class="d-flex justify-content-between align-items-center">
                             <h6>Data Admin Travel</h6>
-                            <a href="/tambahdataadmin" type="button" class="btn btn-primary"><i class="fas fa-plus"><span class="ms-2" style="text-transform: none;">Tambah Admin</span></i></a>
+                            <a href="/tambahdataadmin" type="button" class="btn btn-primary"><i class="fas fa-plus"><span
+                                        class="ms-2" style="text-transform: none;">Tambah Admin</span></i></a>
                         </div>
                         <div class="d-flex justify-content-end align-items-center mt-3">
                             <div class="input-group" style="width: 300px;">
                                 <form action="{{ route('dataadmin') }}" method="GET" class="d-flex">
-                                    <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                                    <input type="text" class="form-control form-control-sm" name="keyword" placeholder="Type here..." value="{{ $keyword ?? '' }}">
+                                    <span class="input-group-text text-body"><i class="fas fa-search"
+                                            aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control form-control-sm" name="keyword"
+                                        placeholder="Type here..." value="{{ $keyword ?? '' }}">
                                     <button class="btn btn-primary" type="submit">Search</button>
                                 </form>
                             </div>
@@ -31,46 +34,67 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nama</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No Telp.</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Role</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal Dibuat</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Aksi</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No
+                                        </th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Nama</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            No Telp.</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Role</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Tanggal Dibuat</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $user)
+                                    @foreach ($user as $index => $item)
                                         <tr>
                                             <td class="align-middle text-center text-sm">
-                                                <span class="text-secondary text-xs font-weight-bold">{{ $loop->iteration }}</span>
+                                                <span
+                                                    class="text-secondary text-xs font-weight-bold">{{ ($user->currentPage() - 1) * $user->perPage() + $loop->iteration }}</span>
                                             </td>
                                             <td>
                                                 <div class="d-flex px-2 py-1">
                                                     <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">{{ $user->nama }}</h6>
-                                                        <p class="text-xs text-secondary mb-0">{{ $user->email }}</p>
+                                                        <h6 class="mb-0 text-sm">{{ $item->nama }}</h6>
+                                                        <p class="text-xs text-secondary mb-0">{{ $item->email }}</p>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <span class="text-secondary text-xs font-weight-bold">{{ $user->telf }}</span>
+                                                <span
+                                                    class="text-secondary text-xs font-weight-bold">{{ $item->telf }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <span class="badge badge-sm bg-gradient-success">{{ $user->user_type }}</span>
+                                                <span
+                                                    class="badge badge-sm bg-gradient-success">{{ $item->user_type }}</span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-secondary text-xs font-weight-bold">{{ $user->created_at }}</span>
+                                                <span
+                                                    class="text-secondary text-xs font-weight-bold">{{ $item->created_at }}</span>
                                             </td>
                                             <td class="align-middle">
-                                                <a href="/editadmin/{{ $user->id }}" type="button" class="btn btn-warning btn-sm me-2" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
+                                                <a href="/editadmin/{{ $item->id }}" type="button"
+                                                    class="btn btn-warning btn-sm me-2" data-bs-toggle="tooltip"
+                                                    data-bs-original-title="Edit user">
                                                     Edit
                                                 </a>
-                                                <form id="delete-form-{{ $user->id }}" action="{{ route('deleteadmin', $user->id) }}" method="POST" style="display: none;">
+                                                <form id="delete-form-{{ $item->id }}"
+                                                    action="{{ route('deleteadmin', $item->id) }}" method="POST"
+                                                    style="display: none;">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
-                                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="tooltip" data-bs-original-title="Delete user" onclick="confirmDelete({{ $user->id }})">
+                                                <button type="button" class="btn btn-danger btn-sm"
+                                                    data-bs-toggle="tooltip" data-bs-original-title="Delete user"
+                                                    onclick="confirmDelete({{ $item->id }})">
                                                     Delete
                                                 </button>
                                             </td>
@@ -79,7 +103,7 @@
                                 </tbody>
                             </table>
                             <div class="card-footer clearfix">
-                                {{ $users->links() }}
+                                {{ $user->links() }}
                             </div>
                         </div>
                     </div>

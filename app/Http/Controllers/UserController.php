@@ -13,10 +13,10 @@ class UserController extends Controller
 {
     public function index(Request $request){
         $keyword = $request->keyword;
-        $users = User::where('nama', 'like', "%$keyword%")
-                        ->orWhere('email', 'like', "%$keyword%")->paginate(5);
+        $user = User::where('nama', 'like', "%$keyword%")
+                        ->orWhere('email', 'like', "%$keyword%")->paginate(3);
 
-        return view('admin.dataadmin', ['users' => $users, 'keyword' => $keyword]);
+        return view('admin.dataadmin', ['user' => $user, 'keyword' => $keyword]);
     }
 
     public function create()
