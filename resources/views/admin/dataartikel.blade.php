@@ -53,9 +53,6 @@
                                             Tanggal Dibuat</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Tanggal Diupdate</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Aksi</th>
                                     </tr>
                                 </thead>
@@ -84,21 +81,32 @@
                                                     class="badge badge-sm bg-gradient-success">{{ $artikel->created_at }}</span>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <span
-                                                    class="badge badge-sm bg-gradient-success">{{ $artikel->updated_at }}</span>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <a href="{{ route('editartikel', $artikel->id) }}" type="button"
-                                                    class="btn btn-warning btn-sm me-2" data-toggle="tooltip"
-                                                    data-original-title="Edit user">Edit</a>
-                                                <form action="{{ route('deleteartikel', $artikel->id) }}" method="POST"
+                                                <a href="/editartikel/{{ $artikel->id }}" type="button"
+                                                    class="btn btn-warning btn-sm me-2" data-bs-toggle="tooltip"
+                                                    data-bs-original-title="Edit artikel">
+                                                    Edit
+                                                </a>
+
+                                                <form id="delete-form-{{ $artikel->id }}"
+                                                    action="{{ route('deleteartikel', $artikel->id) }}" method="POST"
+                                                    style="display: none;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
+                                                <button type="button" class="btn btn-danger btn-sm"
+                                                    data-bs-toggle="tooltip" data-bs-original-title="Delete artikel"
+                                                    onclick="confirmDelete({{ $artikel->id }})">
+                                                    Delete
+                                                </button>
+
+                                                {{-- <form action="{{ route('deleteartikel', $artikel->id) }}" method="POST"
                                                     style="display:inline-block;">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm me-2"
                                                         data-toggle="tooltip" data-original-title="Delete user"
                                                         onclick="return confirm('Apakah Anda yakin ingin menghapus konten ini?')">Hapus</button>
-                                                </form>
+                                                </form> --}}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -113,4 +121,22 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        function confirmDelete(id) {
+            Swal.fire({
+                title: 'Kamu Yakin Mau hapus data ini?',
+                text: "Kamu Akan Menghapus Data ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya hapus data ini!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form-' + id).submit();
+                }
+            })
+        }
+    </script>
 @endsection
