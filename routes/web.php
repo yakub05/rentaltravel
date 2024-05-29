@@ -38,12 +38,16 @@ Route::get('/travel', [TravelController::class, 'user_travel'])->name('travel');
 
 Route::get('/testimoni', [TestimoniController::class, 'user_testimoni'])->name('user.testimoni');
 
+
+Route::get('/register', [AuthController::class, 'create'])->name('register.create');
+Route::post('/register', [AuthController::class, 'store'])->name('register.store');
+
 Route::get('/login', [AuthController::class,'index'])->name('login');
 Route::post('/login', [AuthController::class,'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/register', function () {
-    return view('register');
-})->name('register');
+// Route::get('/register', function () {
+//     return view('register');
+// })->name('register');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])
